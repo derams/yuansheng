@@ -17,10 +17,11 @@
   </style>
 </head>
 <body>
-  <div class="box active ">
+  <div class="box ">
 
   </div>
   <script>
+  // //添加class属性名
   // function add(obj,class1){
   //   var oldclass = ' ' + obj.className + ' '
   //   var re = new RegExp(class1 + "(?= )")
@@ -29,17 +30,44 @@
   //     console.log(1)
   //   }
   // }
-  function re(obj,class2){
+  // var box = document.querySelector('.box')
+  // add(box,'active')
+  // //删除class属性名
+  // function re(obj,class2){
+  //   var oldclass = obj.className
+  //   if(oldclass.indexOf(' '+class2+' ') !== -1){
+  //   var newclass = oldclass.replace(' '+class2+' ',' ')
+  //   obj.className = newclass.trim()
+  //   console.log(1)
+  //   }
+  // }
+
+
+
+
+
+  //数组方法
+  var box = document.querySelector('.box')
+  // re(box,'active')
+  function addClass(obj,class3){
     var oldclass = obj.className
-    if(oldclass.indexOf(' '+class2+' ') !== -1){
-    var newclass = oldclass.replace(' '+class2+' ',' ')
-    obj.className = newclass.trim()
-    console.log(1)
+    var newArry = oldclass.split(' ')
+    if(newArry.indexOf(class3) == -1){
+      obj.className = oldclass + ' ' + class3
     }
   }
-  var box = document.querySelector('.box')
-  re(box,'active')
+  addClass(box,'active')
 
+  function removeClass(obj,class3){
+    var oldclass = obj.className
+    var newArry = oldclass.split(' ')
+    if(newArry.indexOf(class3) != -1){
+      console.log(1)
+      var newclass = newArry.splice(newArry.indexOf(class3), 1)
+      obj.className = newclass.join(' ')
+   }
+  }
+  removeClass(box,'active')
   </script>
 </body>
 </html>
