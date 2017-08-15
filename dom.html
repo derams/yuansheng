@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .box{
+        width: 300px;
+        height: 300px;
+        background-color: cyan;
+      }
+      .active{
+        background-color: blue;
+      }
+  </style>
+</head>
+<body>
+  <div class="box active ">
+
+  </div>
+  <script>
+  // function add(obj,class1){
+  //   var oldclass = ' ' + obj.className + ' '
+  //   var re = new RegExp(class1 + "(?= )")
+  //   if(re.test(oldclass) == false){
+  //     obj.className = oldclass + class1+' '
+  //     console.log(1)
+  //   }
+  // }
+  function re(obj,class2){
+    var oldclass = obj.className
+    if(oldclass.indexOf(' '+class2+' ') !== -1){
+    var newclass = oldclass.replace(' '+class2+' ',' ')
+    obj.className = newclass.trim()
+    console.log(1)
+    }
+  }
+  var box = document.querySelector('.box')
+  re(box,'active')
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		padding: 0;margin: 0;
+	}
+		.show{
+			margin: 0 auto;
+			width: 790px;
+			overflow: hidden;
+			position: relative;
+		}
+		.pic{
+			width: 3710px;
+			transition: all .5s;
+		}
+		.pic img{
+			width: 790px;
+			height: 340px;
+			float: left;
+		}
+		.show ul{
+			list-style: none;
+			width: 250px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.show ul li{
+			float: left;
+		}
+		.show ul li a{
+			display: block;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: orange;
+		}
+		.show>a{
+			position: absolute;
+			top: 150px;
+			display: block;
+			width: 50px;
+			height: 50px;
+			color: #fff;
+			background-color: #000;
+			font-size: 40px;
+			text-decoration: none;
+			text-align: center;
+			opacity: 0.2;
+		}
+		.show:hover>a{
+			opacity: 0.5;
+		}
+		.show .left{
+			left: 0;
+		}
+		.show .right{
+			right: 0;
+		}
+		/*.show .active{
+			background-color: red;
+		}*/
+
+	</style>
+</head>
+<body>
+	<div class="show">
+		<div class="pic">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+		</div>
+		<ul>
+			<li><a href="#" style='background-color:red'></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+		</ul>
+		<a class='left' href="#"><</a>
+		<a class='right' href="#">></a>
+	</div>
+	<script>
+		var obj=document.querySelectorAll('.show li>a')
+		for(var i=0;i<obj.length;i++){
+				obj[i].index=i//创建index索引值属性
+				obj[i].onclick=function(event){
+					event.preventDefault()
+					var ind=this.index
+					num=ind
+					var ml=ind*(-790)+'px'
+					document.querySelector('.pic').style.marginLeft=ml
+					for(var j=0;j<obj.length;j++){
+						if(j!=ind){
+							obj[j].style.backgroundColor='orange'
+						}
+					}
+					this.style.backgroundColor='red'
+			}
+		}
+		
+		var num=0;
+		var left=document.querySelector('.left')
+		left.onclick=function(){
+			num=num-1
+			if(num<0){
+				num=3
+			}
+		var ml=num*(-790)+'px'
+		document.querySelector('.pic').style.marginLeft=ml
+		for(var j=0;j<obj.length;j++){
+				if(j!=num){
+					obj[j].style.backgroundColor='orange'
+				}
+			}
+			obj[num].style.backgroundColor='red'
+		}
+
+		var right=document.querySelector('.right')
+		right.onclick=function(){
+			num=num+1
+			if(num>3){
+				num=0
+			}
+			var mr=num*(-790)+'px'
+			document.querySelector('.pic').style.marginLeft=mr
+			for(var j=0;j<obj.length;j++){
+				if(j!=num){
+					obj[j].style.backgroundColor='orange'
+				}
+			}
+			obj[num].style.backgroundColor='red'
+		}
+		// function addClass(obj,className){
+		// 	var old =obj.getAttribute("class")
+		// 	if(old==null){
+		// 		obj.setAttribute("class",className)
+		// 	}else{
+		// 		var arr =old.split(" ")
+		// 		// console.log(arr)
+		// 		if(arr.indexOf(className)==-1){
+		// 			var newName =old+" "+className
+		// 			obj.setAttribute("class",newName)
+		// 		}
+		// 	}
+		// }
+		// function removeClass(obj,className1){
+		// 	var old1 =obj.getAttribute("class")
+		// 	if(old1!=null){
+		// 		var arr =old1.split(" ")
+		// 		if(arr.indexOf(className1)!=-1){
+		// 			var attr =arr.indexOf(className1)
+		// 			arr.splice(attr,1)
+		// 		}if(arr.length==0){
+		// 			obj.removeAttribute("class")
+		// 		}else{
+		// 			var newName = arr.join(" ")
+		// 			obj.setAttribute("class",newName)
+		// 		}
+		// 	}
+		// }
+	</script>
+</body>
+</html>
