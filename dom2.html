@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    list-style: none;
+  }
+    p{
+      font-size: 20px;
+    }
+    #txt{
+
+    }
+    button{
+
+    }
+  </style>
+</head>
+<body>
+  <p>111</p>
+  <textarea id="txt"></textarea>
+  <button class="btn">评论</button>
+  <ul class="comment">
+    <li>123456789<button>删除</button></li>
+    <li>123456789<button>删除</button></li>
+    <li>123456789<button>删除</button></li>
+    <li>123456789<button>删除</button></li>
+    <li>123456789<button>删除</button></li>
+  </ul>
+  <script>
+    var btn = document.querySelector('.btn')
+    // btn.onclick=function(){
+    //   var text = document.querySelector("#txt").value
+    //   // console.log(text)
+    //   var li = document.createElement("li")
+    //   // console.log(li)
+    //   if(text){
+    //     li.innerHTML=text
+    //   var button = document.createElement('button')
+    //   button.innerHTML='删除'
+    //   li.appendChild(button)
+    //   var first = document.querySelector('ul li')
+    //     var ul = document.querySelector('.comment')
+    //     ul.insertBefore(li,first)
+    //     document.querySelector("#txt").value=''
+    //   }
+    //   document.querySelector('.comment li button').onclick = function(){
+    //     console.log(1)
+    //     document.querySelector('.comment').removeChild(this.parentNode)
+    //   }
+    // }
+    btn.onclick = function(){
+      var text = document.querySelector('#txt').value
+      if(text){
+        var li = document.createElement('li')
+        li.innerHTML=text
+        var button = document.createElement('button')
+        button.innerHTML = '删除'
+        li.appendChild(button)
+        var ul = document.querySelector('.comment')
+        var first = document.querySelector('ul li')
+        ul.insertBefore(li,first)
+        document.querySelector('#txt').value = ''
+      }
+      // document.querySelector('.comment li button').onclick=function(){
+      //   document.querySelector('.comment').removeChild(this.parentNode)
+      // }
+    }
+
+
+    //用for循环来删除li
+
+    // var ALL = document.querySelectorAll('li')
+    // for(var i = 0; i < ALL.length; i++){
+    //   var butt = document.createElement('button')
+    //   butt.innerHTML='删除'
+    //   ALL[i].appendChild(butt)
+    //   butt.onclick=function(){
+    //     document.querySelector('.comment').removeChild(this.parentNode)
+    //   }
+    // }
+
+
+    //事件委托
+    document.querySelector('.comment').onclick = function(event){
+      var ele = event.target
+      if(ele.tagName==='BUTTON'&&ele.innerHTML==='删除'){
+        this.removeChild(ele.parentNode)
+      }
+    }
+  </script>
+</body>
+</html>

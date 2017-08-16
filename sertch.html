@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li{
+      display: none;
+      list-style: none;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text">
+    <button>搜索</button>
+  </div>
+  <div>
+    <li>艾索德发</li>
+    <li>UI节开幕</li>
+    <li>adladsda</li>
+    <li>看见门口</li>
+    <li>萨顶顶</li>
+    <li>康师傅</li>
+    <li>牛肉面</li>
+    <li>洒家的</li>
+    <li>哦哦哦的</li>
+  </div>
+  <script>
+
+    document.querySelector('button').onclick = function(){
+      var val = document.querySelector('input').value
+      var liALL = document.querySelectorAll('li')
+      if(val){
+        for(var i=0; i<liALL.length; i++){
+          var text = liALL[i].innerHTML
+          if(text.indexOf(val)!=-1){
+            liALL[i].style.display='block'
+            // document.querySelector('input').value = ''
+          }else{
+            liALL[i].style.display='none'
+          }
+        }
+      }
+    }
+  document.querySelector('input').onfocus =  function(){
+    window.onkeypress = function(event){
+      if(event.keyCode === 13){
+        document.querySelector('button').onclick()
+      }
+    }
+  }
+  // setTimeout(function(){
+  //   document.querySelector('button').onclick()
+  // },5000)
+  document.querySelector('input').oninput = function(){
+    document.querySelector('button').onclick()
+  }
+  </script>
+</body>
+</html>
