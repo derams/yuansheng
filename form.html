@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      p{
+        background-color: cyan;
+        width: 500px;
+        height: 500px;
+        font-size: 50px;
+        color:black;
+      }
+      span{
+        font-size: 20px;
+      }
+  </style>
+</head>
+<body>
+  <form action="" class="love">
+    <h3>???</h3>
+    <input type="checkbox"><span>ll</span>
+    <input type="checkbox"><span>ss</span>
+    <input type="checkbox"><span>dd</span>
+    <input type="checkbox"><span>aa</span>
+    <input type="checkbox"><span>cc</span><br>
+  </form>
+  <button>tijiao</button><br>
+  <p></p>
+  <script>
+  // var str = ''
+  //   document.querySelector('button').onclick = function(){
+  //     var tt = document.querySelectorAll('input')
+  //     for(var i=0 ; i< tt.length; i++){
+  //       if(tt[i].checked==true){
+  //         var text = tt[i].nextElementSibling.innerHTML
+  //         str = str + ' ' +text
+  //         document.querySelector('p').innerHTML=str
+  //       }
+  //     }
+  //   }
+  var srt = ''
+    document.querySelector('button').onclick = function(){
+      var tt = document.querySelectorAll('input')
+      for(var i=0 ; i< tt.length; i++){
+        var text = tt[i].nextElementSibling.innerHTML
+        if(tt[i].checked==true){
+          srt = srt + ' ' + text
+          document.querySelector('p').innerHTML=srt
+        }
+      }
+    }
+  </script>
+</body>
+</html>

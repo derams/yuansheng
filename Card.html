@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .wrap{
+        display: none;
+        width: 100%;
+        height: 100vh;
+        background-color:rgba(0,0,0,0.3);
+        position: absolute;
+        top:0;
+        left:0;
+      }
+      .modal{
+        position: absolute;
+        left:35%;
+        top:30%;
+        background-color: white;
+      }
+      .modal p{
+        display: block;
+        float: right;
+        margin-right: 10px;
+      }
+
+  </style>
+</head>
+<body>
+  <button >666666</button>
+  <div class="wrap">
+    <div class="modal">
+      <p>x</p><br>
+      <textarea name="name" rows="20" cols="60" placeholder="请输入你想要显示的内容"></textarea>
+    </div>
+  </div>
+  <script>
+      document.querySelector('button').onclick = function(){
+        document.querySelector('.wrap').style.display='block'
+      }
+      document.querySelector('.wrap').onclick = function(){
+          this.style.display='none'
+      }
+      document.querySelector('.modal').onclick = function(){
+        console.log(1)
+        document.querySelector('.wrap').style.display='block'
+      }
+  </script>
+</body>
+</html>
