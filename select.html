@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <select id="car">
+    <option value="6">66666666</option>
+    <option value="5">5555555555</option>
+    <option value="4">44444444444</option>
+    <option value="2">2222222222</option>
+  </select>
+  <input type="button" id="btn" value='按钮'>
+  <script>
+    document.querySelector('#btn').onclick=function(){
+      var pp = document.querySelector('#car')
+      var tt = pp.selectedIndex
+      var val = pp.value
+      console.log(val);
+    }
+  </script>
+</body>
+</html>

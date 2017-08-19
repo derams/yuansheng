@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+    a{
+      text-decoration: none;
+    }
+    .wrap{
+      /*align-items:baseline;*/
+      background-color: #ccc;
+    }
+    .box{
+      /*display: flex;*/
+    }
+    ul{
+      display: flex;
+      justify-content:space-around;
+      list-style: none;
+      align-items: center;
+    }
+    li{
+        position: relative;
+    }
+    .input{
+      position: absolute;
+      top:50%;
+      left:-20px;
+    }
+    img{
+      width: 150px;
+      height: 150px;
+    }
+    .inp{
+      width: 25px;
+      text-align: center;
+    }
+    .root p{
+      float: right;
+      margin: 0;
+    }
+    .root p b, .root p span{
+      color: red;
+    }
+    .root{
+      background-color: #d1d1d1;
+    }
+  </style>
+</head>
+<body>
+    <div class="root"><input type="checkbox" class="all">全选</div>
+    <div class="wrap">
+      <div class="box">
+        <ul class="">
+          <li>
+            <input type="checkbox" class="input"/>
+            <img src="6.jpg" alt="">
+          </li>
+          <li>长沙臭豆腐百年名吃</li>
+          <li>￥<span class="price">99.00</span></li>
+          <li>
+            <a href="#" class="sub">—</a>
+            <input type="text" class="inp" value="0">
+            <a href="#" class="add">+</a>
+          </li>
+          <li>￥<span class="subtotal">0</span></li>
+          <li><a href="#">删除</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="root">
+      <input type="checkbox" class="all">全选
+      <p>
+        总价<span>￥</span><b class="total">0.00</b>
+      </p>
+    </div>
+    <script>
+    var input = document.querySelectorAll('input')
+
+    var all = document.querySelector('.all')
+      all.onclick = function(){
+        if(all.checked){
+          for(var i = 0; i<input.length;i++){
+            input[i].checked=true
+          }
+        }
+        else{
+          for(var j=0;j<input.length;j++){
+            input[j].checked=false
+        }
+      }
+    }
+    document.querySelector('ul').onclick= function(e){
+      console.log(e.value);
+    }
+    //加减法运算
+    var num = 0
+    var com = document.querySelector('.input')
+    var subtotal = document.querySelector('.subtotal').innerHTML
+    var total = document.querySelector('.total').innerHTML
+
+    document.querySelector('.add').onclick=function(){
+      var val = document.querySelector('.inp').value
+      num = parseInt(val)+1
+      document.querySelector('.inp').value = num
+      var price = document.querySelector('.price').innerHTML
+      document.querySelector('.subtotal').innerHTML = price *num
+
+      if(com.checked){
+        var newsubtotal = document.querySelector('.subtotal').innerHTML
+        document.querySelector('.total').innerHTML = parseInt(total) + parseInt(newsubtotal)
+      }
+    }
+    document.querySelector('.sub').onclick=function(){
+      var val = document.querySelector('.inp').value
+      if(val>0){
+        num = parseInt(val)-1
+        document.querySelector('.inp').value = num
+        var price = document.querySelector('.price').innerHTML
+        document.querySelector('.subtotal').innerHTML = price * num
+        // if(com.checked){
+        //   var newsubtotal = document.querySelector('.subtotal').innerHTML
+        //             console.log(newsubtotal);
+        //   document.querySelector('.total').innerHTML = parseInt(total) - parseInt(newsubtotal)
+        //   console.log(newsubtotal);
+        // }
+      }
+    }
+    //商品按钮
+
+      // com.onclick=function(){
+      //   if(this.checked){
+      //     console.log(1);
+      //     document.querySelector('.total').innerHTML = parseInt(subtotal)+parseInt(total)
+      //   }
+      //   else{
+      //     console.log(2);
+      //     document.querySelector('.total').innerHTML = parseInt(total)-parseInt(subtotal)
+      //   }
+      // }
+
+    </script>
+</body>
+</html>

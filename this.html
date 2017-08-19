@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 555px;
+      background-color: cyan;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    5555
+  </div>
+  <ul>
+    <li>4</li>
+    <li>44</li>
+    <li>4</li>
+    <li>4</li>
+    <li>4</li>
+  </ul>
+  <script>
+    // var ss = window.getComputedStyle(document.querySelector('.box',null))
+    // console.log(ss.width)
+    //
+    // var obj = {
+    //   name:'ff',
+    //   age:666,
+    //   say:function(){
+    //     console.log(6666)
+    //   }
+    // }
+    // console.log(obj)
+    // var obj1 = obj
+    // console.log(obj1)
+    // var newobj = []
+    // for(i in obj){
+    //   newobj[i] = obj[i]
+    // }
+    // console.log(newobj);
+    // newobj.name = 999
+    // console.log(newobj);
+    // var arr = [1,2,3,4,5,6,7,8,9]
+    // var ARR = arr.map(e => {e*2})
+    // console.log(ARR);
+    // var a = 20
+    // function fun(){
+    //   var a = 10
+    //   return function fun1(){
+    //     a++
+    //     console.log(a);
+    //   }
+    // }
+    // var s = fun()
+    // s()
+
+    //闭包函数存储变量
+    var arr = document.querySelectorAll('li')
+    for(var i in arr){
+      arr[i].onclick=(function(){
+        var x = i;
+        return function(){
+          console.log(x)
+        }
+      })()
+    }
+
+  </script>
+</body>
+</html>

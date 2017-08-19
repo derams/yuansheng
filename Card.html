@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
+      @keyframes myfirst
+      {
+      from {background: rgba(0,0,0,0.7);}
+      to {background: rgba(0,0,0,0.3);}
+      }
       .wrap{
         display: none;
         width: 100%;
@@ -14,12 +19,14 @@
         position: absolute;
         top:0;
         left:0;
+        animation:myfirst 2s;
       }
       .modal{
         position: absolute;
-        left:35%;
+        left:30%;
         top:30%;
         background-color: white;
+        animation: 
       }
       .modal p{
         display: block;
@@ -44,9 +51,13 @@
       document.querySelector('.wrap').onclick = function(){
           this.style.display='none'
       }
-      document.querySelector('.modal').onclick = function(){
+      document.querySelector('.modal').onclick = function(e){
+        e.stopPropagation()
+      }
+      document.querySelector('.modal>p').onclick=function(e){
         console.log(1)
-        document.querySelector('.wrap').style.display='block'
+        e.stopPropagation()
+        document.querySelector('.wrap').style.display='none'
       }
   </script>
 </body>
