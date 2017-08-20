@@ -60,6 +60,7 @@
       <div class="box">
         <ul class="">
           <li>
+
             <input type="checkbox" class="input"/>
             <img src="6.jpg" alt="">
           </li>
@@ -71,7 +72,26 @@
             <a href="#" class="add">+</a>
           </li>
           <li>￥<span class="subtotal">0</span></li>
-          <li><a href="#">删除</a></li>
+          <li><a href="#" class="remove">删除</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="box">
+        <ul class="">
+          <li>
+            <input type="checkbox" class="input"/>
+            <img src="6.jpg" alt="">
+          </li>
+          <li>长沙臭豆腐百年名吃</li>
+          <li>￥<span class="price">99.00</span></li>
+          <li>
+            <a href="#" class="sub">—</a>
+            <input type="text" class="inp" value="0">
+            <a href="#" class="add">+</a>
+          </li>
+          <li>￥<span class="subtotal">0</span></li>
+          <li><a href="#" class="remove">删除</a></li>
         </ul>
       </div>
     </div>
@@ -83,69 +103,76 @@
     </div>
     <script>
     var input = document.querySelectorAll('input')
-
-    var all = document.querySelector('.all')
-      all.onclick = function(){
-        if(all.checked){
-          for(var i = 0; i<input.length;i++){
-            input[i].checked=true
+    //默认全选
+    for(var i=0;i<input.length;i++){
+      if(input[i].type=='checkbox'){
+        input[i].checked=true
+      }
+    }
+// 全选按钮
+    var inputck = document.querySelectorAll('input')
+    var all = document.querySelectorAll('.all')
+    for(var i=0;i<all.length;i++){
+      all[i].onclick=function(){
+        var allChecked=this.checked
+        for(var j=0;j<input.length;j++){
+          if(inputck[j].type=='checkbox'){
+            inputck[j].checked=allChecked
           }
-        }
-        else{
-          for(var j=0;j<input.length;j++){
-            input[j].checked=false
         }
       }
     }
-    document.querySelector('ul').onclick= function(e){
-      console.log(e.value);
-    }
+
     //加减法运算
     var num = 0
     var com = document.querySelector('.input')
     var subtotal = document.querySelector('.subtotal').innerHTML
     var total = document.querySelector('.total').innerHTML
 
-    document.querySelector('.add').onclick=function(){
-      var val = document.querySelector('.inp').value
-      num = parseInt(val)+1
-      document.querySelector('.inp').value = num
-      var price = document.querySelector('.price').innerHTML
-      document.querySelector('.subtotal').innerHTML = price *num
-
-      if(com.checked){
-        var newsubtotal = document.querySelector('.subtotal').innerHTML
-        document.querySelector('.total').innerHTML = parseInt(total) + parseInt(newsubtotal)
-      }
-    }
-    document.querySelector('.sub').onclick=function(){
-      var val = document.querySelector('.inp').value
-      if(val>0){
-        num = parseInt(val)-1
-        document.querySelector('.inp').value = num
-        var price = document.querySelector('.price').innerHTML
-        document.querySelector('.subtotal').innerHTML = price * num
-        // if(com.checked){
-        //   var newsubtotal = document.querySelector('.subtotal').innerHTML
-        //             console.log(newsubtotal);
-        //   document.querySelector('.total').innerHTML = parseInt(total) - parseInt(newsubtotal)
-        //   console.log(newsubtotal);
-        // }
+    var ul = document.querySelectorAll('ul')
+    for(i=0; i<ul.length;i++){
+      ul[i].onclick=function(e){
+        e.preventDefault()
+        var e = e.target
+        switch(e.className){
+          case 'add':
+            var val = e.parentNode.querySelector('input').value
+            val = parseInt(val)+1
+            e.parentNode.querySelector('input').value = val
+            var price = document.querySelector('.price').innerHTML
+            e.parentNode.parentNode.querySelector('.subtotal').innerHTML = price *val
+            if(com.checked){
+              var newtotal = document.querySelector('.total').innerHTML
+              document.querySelector('.total').innerHTML = parseInt(newtotal) + parseInt(price)
+            }
+            break;
+          case 'sub':
+          var val = e.parentNode.querySelector('input').value
+          if(val>0){
+            val = parseInt(val)-1
+            e.parentNode.querySelector('input').value = val
+            var price = document.querySelector('.price').innerHTML
+            e.parentNode.parentNode.querySelector('.subtotal').innerHTML = price *val
+            if(com.checked){
+              var newtotal = document.querySelector('.total').innerHTML
+              document.querySelector('.total').innerHTML = parseInt(newtotal)-parseInt(price)
+            }
+          }
+          break;
+          case 'remove':
+          var box1 = document.querySelector('.box')
+          this.parentNode.parentNode.removeChild(box1)
+        }
       }
     }
     //商品按钮
 
-      // com.onclick=function(){
-      //   if(this.checked){
-      //     console.log(1);
-      //     document.querySelector('.total').innerHTML = parseInt(subtotal)+parseInt(total)
-      //   }
-      //   else{
-      //     console.log(2);
-      //     document.querySelector('.total').innerHTML = parseInt(total)-parseInt(subtotal)
-      //   }
-      // }
-
+    // var comment = document.querySelectorAll('.input')
+    // for(var i = 0; i<comment.length; i++){
+    //   comment.onchange=function(){
+    //
+    //   }
+    // }
     </script>
 </body>
 </html>
