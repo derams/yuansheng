@@ -60,7 +60,6 @@
       <div class="box">
         <ul class="">
           <li>
-
             <input type="checkbox" class="input"/>
             <img src="6.jpg" alt="">
           </li>
@@ -122,7 +121,6 @@
         }
       }
     }
-
     //加减法运算
     var num = 0
     var com = document.querySelector('.input')
@@ -132,7 +130,6 @@
     var ul = document.querySelectorAll('ul')
     for(i=0; i<ul.length;i++){
       ul[i].onclick=function(e){
-        e.preventDefault()
         var e = e.target
         switch(e.className){
           case 'add':
@@ -162,17 +159,30 @@
           case 'remove':
           var box1 = document.querySelector('.box')
           this.parentNode.parentNode.removeChild(box1)
+          break;
         }
       }
     }
     //商品按钮
-
-    // var comment = document.querySelectorAll('.input')
-    // for(var i = 0; i<comment.length; i++){
-    //   comment.onchange=function(){
-    //
-    //   }
-    // }
+    var comment = document.querySelectorAll('.input')
+    for(var i = 0; i<comment.length; i++){
+      comment[i].onchange=function(){
+       var to = document.querySelector('.total').innerHTML
+       var subTo = document.querySelector('.subtotal').innerHTML
+       console.log(this);
+       for(var j=0;j<comment[j].length;j++)
+        if(comment[j].checked){
+          console.log(1);
+          if(comment[j].checked==false){
+            document.querySelector('.total').innerHTML = parseInt(to) - parseInt(subTo)
+          }
+          else{
+            document.querySelector('.total').innerHTML = parseInt(to) + parseInt(subTo)
+            console.log(3);
+          }
+        }
+      }
+    }
     </script>
 </body>
 </html>

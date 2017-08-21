@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .box{
+        height: 300px;
+        width: 300px;
+        border-radius:50%;
+        background-color: cyan;
+
+      }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <button>按钮</button>
+  <script>
+    // function count(){
+    //   var num = 0
+    //   for(var i=0; i<arguments.length;i++){
+    //     if(typeof arguments[i]==="number"){
+    //       num = num +arguments[i]
+    //     }
+    //   }
+    //   return num
+    // }
+    // console.log(count(1,2,3,4,5,6))
+    // console.log(count('1','a',2,4))
+    //回调函数    当一个函数当做参数传入另一个函数中就叫做回调函数
+    var box = document.querySelector('.box')
+    var t = null;
+    function animate(obj,styleCss,target,callback){
+      var start = parseFloat(window.getComputedStyle(obj,null)[styleCss])
+      clearInterval(t)
+       t = setInterval(function(){
+        if(start>target){
+          start--
+        }
+        else if(start<target){
+          start++
+          }
+          obj.style[styleCss]=start + 'px'
+          if(target===start){
+            clearInterval(t)
+            if(callback){
+              callback()
+            }
+        }
+      },10)
+    }
+    // animate(box,'marginRight',700)
+    document.querySelector('button').onclick=function(){
+      animate(box,'marginLeft',400,function(){
+        animate(box,'marginLeft',0)
+      })
+    }
+
+  </script>
+</body>
+</html>
